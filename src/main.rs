@@ -1,7 +1,5 @@
-
 mod util;
 mod test;
-
 
 use clap::Parser;
 
@@ -21,8 +19,18 @@ struct Args {
 fn main() {
     let args = Args::parse();
 
-    let tag_type = args.dict;
+    let tag_type = String::from(args.dict);
 
-    println!("{}", args.count);
-    println!("{}", tag_type);
+    for _i in 0..args.count {
+        let tag = generate_tag(&tag_type);
+        println!("{}", tag);
+    }
+}
+
+fn generate_tag(tag_type: &str) -> String {
+    match tag_type {
+        "alphanumeric" => util::generate_alphanumeric_tag(Option::None),
+        "custom" => util::generate_language_based_tag("custom"),
+        _ => util::generate_alphanumeric_tag(Option::None),
+    }
 }
