@@ -16,3 +16,12 @@ pub fn read_words_from_file(filename: &str) -> io::Result<Vec<String>> {
 
     Ok(words)
 }
+
+pub fn get_words_by_dictionary(language: &str) -> Vec<String> {
+    let words = match read_words_from_file(format!("dictionaries/{}.txt", language).as_str()) {
+        Ok(words) => words,
+        Err(_) => vec!["lorem".to_string(), "ipsum".to_string()],
+    };
+
+    words
+}

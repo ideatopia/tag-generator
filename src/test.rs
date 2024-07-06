@@ -96,3 +96,36 @@ fn test_read_words_from_windows_line_formatting() {
     // Clean up: delete the temporary file
     std::fs::remove_file(filename).expect("Failed to delete test file");
 }
+
+#[test]
+fn test_get_words_by_dictionary_basic() {
+    // Define the path to the test.txt file within the dictionaries folder
+    let language = "test_get_words_by_dictionary_basic";
+    let filename = "dictionaries/test_get_words_by_dictionary_basic.txt";
+
+    // Create the test.txt file with known content
+    std::fs::create_dir_all("dictionaries").expect("Failed to create dictionaries directory");
+    std::fs::write(filename, "apple\nbanana\ncherry").expect("Failed to write test file");
+
+    // Call the function under test
+    let words = get_words_by_dictionary(language);
+
+    // Assert the words
+    assert_eq!(words, vec!["apple", "banana", "cherry"]);
+
+    // Clean up: delete the temporary file
+    std::fs::remove_file(filename).expect("Failed to delete test file");
+}
+
+#[test]
+fn test_get_words_by_dictionary_default() {
+    // Define the path to the test.txt file within the dictionaries folder
+    let language = "non-existent";
+
+    // Call the function under test
+    let words = get_words_by_dictionary(language);
+
+    // Assert the words
+    assert_eq!(words, vec!["lorem", "ipsum"]);
+}
+
