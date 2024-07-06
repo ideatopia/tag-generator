@@ -10,7 +10,7 @@ use clap::Parser;
 #[command(version, about, long_about = None)]
 struct Args {
     /// Sets the type of tags to generate (alphanumeric, latin, english, french)
-    #[arg(default_value_t = String::from("latin"))]
+    #[arg(default_value_t = String::from("alphanumeric"))]
     dict: String,
 
     /// Sets the number of tags to generate
