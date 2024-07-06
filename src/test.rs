@@ -1,3 +1,4 @@
+use crate::util;
 use crate::util::*;
 
 #[test]
@@ -129,3 +130,20 @@ fn test_get_words_by_dictionary_default() {
     assert_eq!(words, vec!["lorem", "ipsum"]);
 }
 
+#[test]
+fn test_generate_alphanumeric_tag_define_length() {
+    // Generate random alphanumeric tag
+    let tag = generate_alphanumeric_tag(Option::from(10));
+
+    // Assert tag length
+    assert_eq!(tag.len(), 10);
+}
+
+#[test]
+fn test_generate_alphanumeric_tag_default_length() {
+    // Generate random alphanumeric tag
+    let tag = generate_alphanumeric_tag(Option::None);
+
+    // Assert tag length
+    assert_eq!(tag.len(), 6);
+}
