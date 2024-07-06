@@ -1,4 +1,5 @@
 mod util;
+#[cfg(test)]
 mod test;
 
 use clap::Parser;
