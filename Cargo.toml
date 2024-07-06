@@ -2,6 +2,12 @@
 name = "tag-generator"
 version = "0.1.0"
 edition = "2021"
+description = "A tag generator written in RustLang"
+keywords = ["rust", "tag", "rand", "generator", "alphanumeric"]
+license-file = "LICENSE"
+homepage = "https://crates.io/crates/ideatopia-tag-generator"
+repository = "https://github.com/ideatopia/tag-generator"
+documentation = "https://docs.rs/ideatopia-tag-generator"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
