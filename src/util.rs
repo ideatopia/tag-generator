@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
-use rand::{distributions::Alphanumeric, Rng};
+use rand::{distributions::Alphanumeric, prelude::SliceRandom, Rng};
 
 
 pub fn read_words_from_file(filename: &str) -> io::Result<Vec<String>> {
@@ -33,6 +33,13 @@ pub fn generate_alphanumeric_tag(length: Option<usize>) -> String {
         .take(length.unwrap_or(6))
         .map(char::from)
         .collect();
+
+    tag
+}
+
+pub fn generate_language_based_tag(language: &str) -> String {
+    let words = get_words_by_dictionary(language);
+    let tag = words.choose(&mut rand::thread_rng()).unwrap().to_string();
 
     tag
 }
